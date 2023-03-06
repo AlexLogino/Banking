@@ -36,6 +36,7 @@ public class BankManagerTest extends BaseTest {
 
         Assert.assertTrue(openAccountPage.isSelectCurrencyDisplayed());
         Assert.assertTrue(openAccountPage.isSelectCustomerNameDisplayed());
+        Assert.assertTrue(openAccountPage.isBtnProcessDisplayed());
     }
 
     @Test
