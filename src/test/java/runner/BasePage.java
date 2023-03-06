@@ -18,15 +18,11 @@ public abstract class BasePage {
     }
 
     protected WebDriverWait getWait3(){
-        wait3 = new WebDriverWait(driver, Duration.ofSeconds(3));
-
-        return wait3;
+        return wait3 = new WebDriverWait(driver, Duration.ofSeconds(3));
     }
 
     protected WebDriverWait getWait(int duration){
-        wait = new WebDriverWait(driver, Duration.ofSeconds(duration));
-
-        return wait;
+        return wait = new WebDriverWait(driver, Duration.ofSeconds(duration));
     }
 
     public BasePage(WebDriver driver) {

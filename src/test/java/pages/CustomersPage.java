@@ -44,14 +44,6 @@ public class CustomersPage extends HeaderPage {
         return getWait3().until(ExpectedConditions.invisibilityOf(tableNewLine));
     }
 
-    public Boolean isTableLastNameNotDisplayed(){
-        return getWait3().until(ExpectedConditions.invisibilityOf(tableLastName));
-    }
-
-    public Boolean isTablePostCodeNotDisplayed(){
-        return getWait3().until(ExpectedConditions.invisibilityOf(tablePostCode));
-    }
-
     public List<String> isTableNewCustomerDisplayed(){
         List<String> list = new ArrayList<>();
         list.add(getWait3().until(ExpectedConditions.visibilityOf(tableFirstName)).getText());

@@ -14,9 +14,7 @@ public class CustomerPage extends HeaderPage {
     }
 
     public Boolean isSelectYourNameDisplayed(){
-        getWait3().until(ExpectedConditions.visibilityOf(selectYourName));
-
-        return selectYourName.isDisplayed();
+        return getWait3().until(ExpectedConditions.visibilityOf(selectYourName)).isDisplayed();
     }
 
     public void clickSelectYourName(){

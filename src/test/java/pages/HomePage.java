@@ -12,11 +12,18 @@ public class HomePage extends HeaderPage {
     @FindBy(xpath = "//button[@ng-click='manager()']")
     private WebElement btnBankManagerLogin;
 
-
-
     public HomePage(WebDriver driver){
         super(driver);
     }
+
+    public Boolean isBtnBankManagerLoginDisplayed(){
+        return getWait3().until(ExpectedConditions.visibilityOf(btnBankManagerLogin)).isDisplayed();
+    }
+
+    public Boolean isBtnCustomerLoginDisplayed(){
+        return getWait3().until(ExpectedConditions.visibilityOf(btnCustomerLogin)).isDisplayed();
+    }
+
     public BankManagerPage clickBankManagerLogin(){
         getWait3().until(ExpectedConditions.visibilityOf(btnBankManagerLogin));
         btnBankManagerLogin.click();
@@ -29,17 +36,5 @@ public class HomePage extends HeaderPage {
         btnCustomerLogin.click();
 
         return new CustomerPage(getDriver());
-    }
-
-    public Boolean isBtnBankManagerLoginDisplayed(){
-        getWait3().until(ExpectedConditions.visibilityOf(btnBankManagerLogin));
-
-        return btnBankManagerLogin.isDisplayed();
-    }
-
-    public Boolean isBtnCustomerLoginDisplayed(){
-        getWait3().until(ExpectedConditions.visibilityOf(btnCustomerLogin));
-
-        return btnCustomerLogin.isDisplayed();
     }
 }

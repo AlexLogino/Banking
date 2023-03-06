@@ -84,9 +84,4 @@ public class AddCustomerPage extends HeaderPage {
 
         return this;
     }
-
-    //Please check the details. Customer may be duplicate. - алерт при одинаковом заполнении (при всех одинаковых полях)
-    //Customer added successfully with customer id :12 - алерт при валидном заполнении
-
-
 }
