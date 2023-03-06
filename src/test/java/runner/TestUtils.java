@@ -22,9 +22,6 @@ public class TestUtils {
         return getRandomCodeStr(15);
     }
 
-    // погуглить метод для рандомного количества чисел для поля Deposit и Withdrawal
-    // или то что ниже
-
     public static String getRandomInt(int length) {
         return RandomStringUtils.random(length,
                 "0123456789");

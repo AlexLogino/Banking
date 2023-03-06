@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-public class OpenAccountPage<Currency> extends HeaderPage {
+public class OpenAccountPage extends HeaderPage {
 
     @FindBy(name = "userSelect")
     private WebElement selectCustomerName;
@@ -40,5 +40,32 @@ public class OpenAccountPage<Currency> extends HeaderPage {
 
     public Boolean isBtnProcessDisplayed(){
         return getWait3().until(ExpectedConditions.visibilityOf(btnProcess)).isDisplayed();
+    }
+
+    public OpenAccountPage selectCustomerName(String name){
+        getWait3().until(ExpectedConditions.presenceOfElementLocated(By.xpath("//option[text()='" + name + "']")))
+                .click();
+        return new OpenAccountPage(getDriver());
+    }
+
+    public OpenAccountPage selectCurrencyPound(){
+        getWait3().until(ExpectedConditions.visibilityOf(selectPound)).click();
+        return new OpenAccountPage(getDriver());
+    }
+
+    public OpenAccountPage selectCurrencyDollar(){
+        getWait3().until(ExpectedConditions.visibilityOf(selectDollar)).click();
+        return new OpenAccountPage(getDriver());
+    }
+
+    public OpenAccountPage selectCurrencyRupee(){
+        getWait3().until(ExpectedConditions.visibilityOf(selectRupee)).click();
+        return new OpenAccountPage(getDriver());
+    }
+
+    public OpenAccountPage clickBtnProcess(){
+        getWait3().until(ExpectedConditions.visibilityOf(btnProcess)).click();
+
+        return new OpenAccountPage(getDriver());
     }
 }

@@ -19,34 +19,16 @@ public class BankManagerPage extends HeaderPage {
         super(driver);
     }
 
-    public String getTabAddCustomer(){
-        return tabAddCustomer.getText();
-    }
-
-    public String getTabOpenAccount(){
-        return tabOpenAccount.getText();
-    }
-
-    public String getTabCustomers(){
-        return tabCustomers.getText();
-    }
-
     public Boolean isTabAddCustomerDisplayed(){
-        getWait3().until(ExpectedConditions.visibilityOf(tabAddCustomer));
-
-        return tabAddCustomer.isDisplayed();
+        return getWait3().until(ExpectedConditions.visibilityOf(tabAddCustomer)).isDisplayed();
     }
 
     public Boolean isTabOpenAccountDisplayed(){
-        getWait3().until(ExpectedConditions.visibilityOf(tabOpenAccount));
-
-        return tabOpenAccount.isDisplayed();
+        return getWait3().until(ExpectedConditions.visibilityOf(tabOpenAccount)).isDisplayed();
     }
 
     public Boolean isTabCustomersDisplayed(){
-        getWait3().until(ExpectedConditions.visibilityOf(tabCustomers));
-
-        return tabCustomers.isDisplayed();
+        return getWait3().until(ExpectedConditions.visibilityOf(tabCustomers)).isDisplayed();
     }
 
     public AddCustomerPage clickTabAddCustomer(){
