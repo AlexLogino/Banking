@@ -2,6 +2,7 @@ package tests;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pages.AddCustomerPage;
 import pages.HomePage;
 import runner.BaseTest;
 import runner.TestDataUtils;
@@ -11,7 +12,7 @@ import java.util.List;
 public class AddCustomerTest extends BaseTest {
 
     @Test
-    public void addNewCustomerAlertTest(){
+    public void textAlertNewCustomerTest(){
         String alertText = new HomePage(getDriver())
                 .clickBankManagerLogin()
                 .clickTabAddCustomer()
@@ -21,11 +22,12 @@ public class AddCustomerTest extends BaseTest {
                 .clickAddCustomer()
                 .textAlertNewCustomer();
 
-        Assert.assertEquals(alertText, "Customer added successfully with customer id :6");
+        String number = new AddCustomerPage(getDriver()).textAlertNumberNewCustomer();
+        Assert.assertEquals(alertText, "Customer added successfully with customer id :" + number);
     }
 
     @Test
-    public void addNewCustomerTest(){
+    public void createNewCustomerTest(){
         List<String> list = new HomePage(getDriver())
                 .clickBankManagerLogin()
                 .clickTabAddCustomer()
@@ -43,7 +45,7 @@ public class AddCustomerTest extends BaseTest {
     }
 
     @Test
-    public void addNewCustomerWithoutLastNameTest(){
+    public void createNewCustomerWithoutLastNameTest(){
         Boolean newLine = new HomePage(getDriver())
                 .clickBankManagerLogin()
                 .clickTabAddCustomer()
@@ -57,7 +59,7 @@ public class AddCustomerTest extends BaseTest {
     }
 
     @Test
-    public void addNewCustomerWithoutFirstNameTest(){
+    public void createNewCustomerWithoutFirstNameTest(){
         Boolean newLine = new HomePage(getDriver())
                 .clickBankManagerLogin()
                 .clickTabAddCustomer()
@@ -71,7 +73,7 @@ public class AddCustomerTest extends BaseTest {
     }
 
     @Test
-    public void addNewCustomerWithoutPostCodeTest(){
+    public void createNewCustomerWithoutPostCodeTest(){
         Boolean newLine = new HomePage(getDriver())
                 .clickBankManagerLogin()
                 .clickTabAddCustomer()
@@ -85,7 +87,7 @@ public class AddCustomerTest extends BaseTest {
     }
 
     @Test
-    public void addRepeatCustomerAlertTest(){
+    public void createRepeatCustomerAlertTest(){
         String alertText = new HomePage(getDriver())
                 .clickBankManagerLogin()
                 .clickTabAddCustomer()

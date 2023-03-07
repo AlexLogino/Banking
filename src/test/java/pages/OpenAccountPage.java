@@ -45,27 +45,49 @@ public class OpenAccountPage extends HeaderPage {
     public OpenAccountPage selectCustomerName(String name){
         getWait3().until(ExpectedConditions.presenceOfElementLocated(By.xpath("//option[text()='" + name + "']")))
                 .click();
-        return new OpenAccountPage(getDriver());
+        return this;
     }
 
     public OpenAccountPage selectCurrencyPound(){
         getWait3().until(ExpectedConditions.visibilityOf(selectPound)).click();
-        return new OpenAccountPage(getDriver());
+        return this;
     }
 
     public OpenAccountPage selectCurrencyDollar(){
         getWait3().until(ExpectedConditions.visibilityOf(selectDollar)).click();
-        return new OpenAccountPage(getDriver());
+        return this;
     }
 
     public OpenAccountPage selectCurrencyRupee(){
         getWait3().until(ExpectedConditions.visibilityOf(selectRupee)).click();
-        return new OpenAccountPage(getDriver());
+        return this;
     }
 
     public OpenAccountPage clickBtnProcess(){
         getWait3().until(ExpectedConditions.visibilityOf(btnProcess)).click();
 
-        return new OpenAccountPage(getDriver());
+        return this;
+    }
+
+    public BankManagerPage acceptAlertNewAccount(){
+        getDriver().switchTo().alert().accept();
+
+        return new BankManagerPage(getDriver());
+    }
+
+    public OpenAccountPage acceptAlertAndNewAccount(){
+        getDriver().switchTo().alert().accept();
+
+        return this;
+    }
+
+    public String textAlertNewAccount(){
+        return getDriver().switchTo().alert().getText();
+    }
+
+    public String textAlertNumberNewAccount(){
+        String number = textAlertNewAccount();
+
+        return number.substring(number.indexOf(':') + 1);
     }
 }
