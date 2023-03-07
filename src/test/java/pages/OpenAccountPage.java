@@ -75,12 +75,6 @@ public class OpenAccountPage extends HeaderPage {
         return new BankManagerPage(getDriver());
     }
 
-    public OpenAccountPage acceptAlertAndNewAccount(){
-        getDriver().switchTo().alert().accept();
-
-        return this;
-    }
-
     public String textAlertNewAccount(){
         return getDriver().switchTo().alert().getText();
     }
