@@ -114,4 +114,44 @@ public class OpenAccountTest extends BaseTest {
         Assert.assertEquals(list.get(2), TestDataUtils.POST_CODE);
         Assert.assertEquals(list.get(3), number);
     }
+
+    @Test
+    public void createNewAccountWithoutNameTest() {
+        Boolean newLine = new HomePage(getDriver())
+                .clickBankManagerLogin()
+                .clickTabAddCustomer()
+                .setFirstName(TestDataUtils.FIRST_NAME)
+                .setLastName(TestDataUtils.LAST_NAME)
+                .setPostCode(TestDataUtils.POST_CODE)
+                .clickAddCustomer()
+                .acceptAlertNewCustomer()
+                .clickTabOpenAccount()
+                .selectCurrencyRupee()
+                .clickBtnProcess()
+                .clickBtnProcessWithoutField()
+                .clickTabCustomers()
+                .isTableNewLineNotDisplayed();
+
+        Assert.assertTrue(newLine);
+    }
+
+    @Test
+    public void createNewAccountWithoutCurrencyTest() {
+        Boolean newLine = new HomePage(getDriver())
+                .clickBankManagerLogin()
+                .clickTabAddCustomer()
+                .setFirstName(TestDataUtils.FIRST_NAME)
+                .setLastName(TestDataUtils.LAST_NAME)
+                .setPostCode(TestDataUtils.POST_CODE)
+                .clickAddCustomer()
+                .acceptAlertNewCustomer()
+                .clickTabOpenAccount()
+                .selectCustomerName(TestDataUtils.FIRST_NAME + " " + TestDataUtils.LAST_NAME)
+                .clickBtnProcess()
+                .clickBtnProcessWithoutField()
+                .clickTabCustomers()
+                .isTableNewLineNotDisplayed();
+
+        Assert.assertTrue(newLine);
+    }
 }

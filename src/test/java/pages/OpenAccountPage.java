@@ -69,6 +69,12 @@ public class OpenAccountPage extends HeaderPage {
         return this;
     }
 
+    public BankManagerPage clickBtnProcessWithoutField(){
+        getWait3().until(ExpectedConditions.visibilityOf(btnProcess)).click();
+
+        return new BankManagerPage(getDriver());
+    }
+
     public BankManagerPage acceptAlertNewAccount(){
         getDriver().switchTo().alert().accept();
 
