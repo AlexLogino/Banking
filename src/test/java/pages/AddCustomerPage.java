@@ -73,6 +73,12 @@ public class AddCustomerPage extends HeaderPage {
         return getDriver().switchTo().alert().getText();
     }
 
+    public String textAlertNumberNewCustomer(){
+        String number = textAlertNewCustomer();
+
+        return number.substring(number.indexOf(':') + 1);
+    }
+
     public BankManagerPage acceptAlertNewCustomer(){
         getDriver().switchTo().alert().accept();
 

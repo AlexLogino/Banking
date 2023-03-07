@@ -28,6 +28,17 @@ public class CustomersPage extends HeaderPage {
     @FindBy(xpath = "//tbody/tr[6]/td[3]")
     private WebElement tablePostCode;
 
+    @FindBy(xpath = "//tbody/tr[6]//span[@ng-repeat][1]")
+    private WebElement tableAccountNumber1;
+
+    @FindBy(xpath = "//tbody/tr[6]//span[@ng-repeat][2]")
+    private WebElement tableAccountNumber2;
+
+    @FindBy(xpath = "//tbody/tr[6]//span[@ng-repeat][3]")
+    private WebElement tableAccountNumber3;
+
+    List<String> list = new ArrayList<>();
+
     public CustomersPage(WebDriver driver){
         super(driver);
     }
@@ -44,11 +55,28 @@ public class CustomersPage extends HeaderPage {
         return getWait3().until(ExpectedConditions.invisibilityOf(tableNewLine));
     }
 
+    public String concatNumbers(){
+        return tableAccountNumber1.getText() + " " + tableAccountNumber2.getText() + " " + tableAccountNumber3.getText();
+    }
+
     public List<String> isTableNewCustomerDisplayed(){
-        List<String> list = new ArrayList<>();
         list.add(getWait3().until(ExpectedConditions.visibilityOf(tableFirstName)).getText());
         list.add(getWait3().until(ExpectedConditions.visibilityOf(tableLastName)).getText());
         list.add(getWait3().until(ExpectedConditions.visibilityOf(tablePostCode)).getText());
+
+        return list;
+    }
+
+    public List<String> isTableNewCustomerAndAccountNumbersDisplayed(){
+        isTableNewCustomerDisplayed();
+        list.add(concatNumbers());
+
+        return list;
+    }
+
+    public List<String> isTableNewCustomerAndAccountNumberDisplayed(){
+        isTableNewCustomerDisplayed();
+        list.add(getWait3().until(ExpectedConditions.visibilityOf(tableAccountNumber1)).getText());
 
         return list;
     }
