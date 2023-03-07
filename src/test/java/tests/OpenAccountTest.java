@@ -33,7 +33,7 @@ public class OpenAccountTest extends BaseTest {
 
     @Test
     public void createNewAccountDollarTest(){
-        List<String> list = new HomePage(getDriver())
+        String number = new HomePage(getDriver())
                 .clickBankManagerLogin()
                 .clickTabAddCustomer()
                 .setFirstName(TestDataUtils.FIRST_NAME)
@@ -45,6 +45,10 @@ public class OpenAccountTest extends BaseTest {
                 .selectCustomerName(TestDataUtils.FIRST_NAME + " " + TestDataUtils.LAST_NAME)
                 .selectCurrencyDollar()
                 .clickBtnProcess()
+                .textAlertNumberNewAccount();
+
+
+        List<String> list = new OpenAccountPage(getDriver())
                 .acceptAlertNewAccount()
                 .clickTabCustomers()
                 .isTableNewCustomerAndAccountNumberDisplayed();
@@ -52,12 +56,12 @@ public class OpenAccountTest extends BaseTest {
         Assert.assertEquals(list.get(0), TestDataUtils.FIRST_NAME);
         Assert.assertEquals(list.get(1), TestDataUtils.LAST_NAME);
         Assert.assertEquals(list.get(2), TestDataUtils.POST_CODE);
-        Assert.assertEquals(list.get(3), "1016");
+        Assert.assertEquals(list.get(3), number);
     }
 
-    @Test
-    public void createNewAccountTest(){
-        List<String> list = new HomePage(getDriver())
+   @Test
+    public void createNewAccountPoundTest(){
+        String number = new HomePage(getDriver())
                 .clickBankManagerLogin()
                 .clickTabAddCustomer()
                 .setFirstName(TestDataUtils.FIRST_NAME)
@@ -67,23 +71,47 @@ public class OpenAccountTest extends BaseTest {
                 .acceptAlertNewCustomer()
                 .clickTabOpenAccount()
                 .selectCustomerName(TestDataUtils.FIRST_NAME + " " + TestDataUtils.LAST_NAME)
-                .selectCurrencyDollar()
-                .clickBtnProcess()
-                .acceptAlertAndNewAccount()
-                .selectCustomerName(TestDataUtils.FIRST_NAME + " " + TestDataUtils.LAST_NAME)
                 .selectCurrencyPound()
                 .clickBtnProcess()
-                .acceptAlertAndNewAccount()
-                .selectCustomerName(TestDataUtils.FIRST_NAME + " " + TestDataUtils.LAST_NAME)
-                .selectCurrencyRupee()
-                .clickBtnProcess()
+                .textAlertNumberNewAccount();
+
+
+        List<String> list = new OpenAccountPage(getDriver())
                 .acceptAlertNewAccount()
                 .clickTabCustomers()
-                .isTableNewCustomerAndAccountNumbersDisplayed();
+                .isTableNewCustomerAndAccountNumberDisplayed();
 
         Assert.assertEquals(list.get(0), TestDataUtils.FIRST_NAME);
         Assert.assertEquals(list.get(1), TestDataUtils.LAST_NAME);
         Assert.assertEquals(list.get(2), TestDataUtils.POST_CODE);
-        Assert.assertEquals(list.get(3), "1016 1017 1018");
+        Assert.assertEquals(list.get(3), number);
+    }
+
+    @Test
+    public void createNewAccountRupeeTest(){
+        String number = new HomePage(getDriver())
+                .clickBankManagerLogin()
+                .clickTabAddCustomer()
+                .setFirstName(TestDataUtils.FIRST_NAME)
+                .setLastName(TestDataUtils.LAST_NAME)
+                .setPostCode(TestDataUtils.POST_CODE)
+                .clickAddCustomer()
+                .acceptAlertNewCustomer()
+                .clickTabOpenAccount()
+                .selectCustomerName(TestDataUtils.FIRST_NAME + " " + TestDataUtils.LAST_NAME)
+                .selectCurrencyRupee()
+                .clickBtnProcess()
+                .textAlertNumberNewAccount();
+
+
+        List<String> list = new OpenAccountPage(getDriver())
+                .acceptAlertNewAccount()
+                .clickTabCustomers()
+                .isTableNewCustomerAndAccountNumberDisplayed();
+
+        Assert.assertEquals(list.get(0), TestDataUtils.FIRST_NAME);
+        Assert.assertEquals(list.get(1), TestDataUtils.LAST_NAME);
+        Assert.assertEquals(list.get(2), TestDataUtils.POST_CODE);
+        Assert.assertEquals(list.get(3), number);
     }
 }
